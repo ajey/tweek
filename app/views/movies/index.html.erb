@@ -1,0 +1,48 @@
+<h1>Listing movies</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Year</th>
+    <th> Genres </th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @movies.each do |movie| %>
+  <tr>
+    <td><%= movie.title %></td>
+    <td><%= movie.year %></td>
+    <td><%= movie.tag_list %></td>
+    <td>
+    <%= link_to 'like', like_movie_path(movie), :method => :post %> |  
+    <%= link_to 'Show', movie %> |
+    <%= link_to 'Edit', edit_movie_path(movie) %> |
+    <%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<p><b> Favourite Movies </b> </p>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Year</th>
+    <th> Genres </th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% current_user.movies.each do |movie| %>
+  <tr>
+    <td><%= movie.title %></td>
+    <td><%= movie.year %></td>
+    <td><%= movie.tag_list %></td>
+    <td>
+    <%= link_to 'Dislike', dislike_movie_path(movie.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'New Movie', new_movie_path %>
