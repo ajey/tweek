@@ -1,7 +1,7 @@
 == Welcome to Rails
 
 Tweek demo
-This app based on ruby 1.9.3 and rails 3.2.6
+This app is developed using ruby 1.9.3 and rails 3.2.6
 
 
 
